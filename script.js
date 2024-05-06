@@ -63,11 +63,16 @@ Book.prototype.makeBook = function() {
 
 form.addEventListener("submit", () => {
     // this will return true if the conditional is true 
-    let bool = form.read.value === "true";
+    let readresponse = hasRead(form.read.value === "true");
 
     // pass book info to addBookToLibrary function to add book
-    addBookToLibrary(form.title.value, form.author.value, form.pages.value, bool)
+    addBookToLibrary(form.title.value, form.author.value, form.pages.value, readresponse)
 })
+
+// determine response based on read bool
+function hasRead(read) {
+    return read ? "read" : "not read yet";
+}
 
 // create book, push book to library array
 function addBookToLibrary(title, author, pages, read) {
@@ -80,17 +85,12 @@ function addBookToLibrary(title, author, pages, read) {
 
 // loop through array and display book on page
 function displayBooks() {
-    // for (let book of myLibrary) {
+    for (let book of myLibrary) {
         // create a div
-        // book.makeBook();
+        book.makeBook();
 
         // edit textcontent of the div
 
         // add CSS class to display properly
-    // }
-}
-
-// determine response based on read bool
-function hasRead(read) {
-    return read ? "read" : "not read yet";
+    }
 }
