@@ -26,5 +26,38 @@
         <div class="books">Book 4</div>
         <div class="books">Book 5</div>
     </div>
+    <dialog id="dialog">
+        <div class="dialog-container">
+            <h2>Add Your Book!</h2>
+            <form method="dialog" action="">
+                <div class="input-container">
+                    <label for="title">Title: </label>
+                    <input type="text" id="title" name="bookTitle">
+                </div>
+                <div class="input-container">
+                    <label for="author">Author: </label>
+                    <input type="text" id="author" name="bookAuthor">
+                </div>
+                <div class="input-container">
+                    <label for="pages">Number of Pages: </label>
+                    <input type="number" id="pages" name="bookPages">
+                </div>
+                <div class="input-container">
+                    <label>Read: </label>
+                    <div class="radio-btn-container">
+                        <div>
+                            <input type="radio" id="read" name="read" value="true" />
+                            <label for="read">Read</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="notread" name="read" value="false" />
+                            <label for="read">Not Read</label>
+                        </div>
+                    </div>
+                </div>
+                <button value="submit" type="submit">Close</button>
+            </form>
+        </div>
+    </dialog>
 </body>
 </html>

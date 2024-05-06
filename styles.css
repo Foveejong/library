@@ -39,4 +39,70 @@ button {
     background-color: rgb(255, 201, 219);
     border: none;
     border-radius: 10px;
+    cursor: pointer;
+}
+
+dialog {
+    position: absolute;
+    top: 10vh;
+    left: 0;
+    margin-left: auto; 
+    margin-right: auto; 
+    width: 30vw;
+    height: 50vh;
+    padding: 1vw 2vw;
+}
+
+.dialog-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+    align-items: center;
+}
+
+dialog > h2 {
+    align-self: center;
+}
+
+form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vh;
+}
+
+.input-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1vw;
+}
+
+.radio-btn-container {
+    width: 20vw;
+    display: flex;
+    justify-content: space-around;
+}
+
+button[type="submit"] {
+    width: 10vw;
+    margin: 5vh auto 0 auto;
+    background-color: rgb(201, 227, 255);
+}
+
+label {
+    flex: 1 1 0;
+    text-align: center;
+}
+
+input[type]:not(input[type="radio"]) {
+    padding: 0.5vw;
+    width: 20vw;
+}
+
+#dialog::backdrop {
+    background: linear-gradient(45deg, aquamarine, pink);
+    opacity: 0.6;
 }
