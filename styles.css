@@ -1,5 +1,42 @@
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* border: black 1px solid; */
+}
+
+.library {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 3vw;
+}
+
+.books {
+    background-color: lavender;
+    border-radius: 20px;
+    min-height: 30vh;
+    padding: 3vh;
+}
+
+.book-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%
+}
+
+.btn-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-self: stretch;
+    gap: 1vw;
+}
+
+button {
+    height: 2rem;
+    background-color: rgb(255, 201, 219);
+    border: none;
+    border-radius: 10px;
 }
