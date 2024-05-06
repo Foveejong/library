@@ -1,5 +1,6 @@
-const myLibrary = [1, 2, 3, 4, 5];
-
+const myLibrary = [];
+const dialog = document.querySelector('#dialog');
+const form = document.querySelector('form');
 
 // define the book constructor
 function Book(title, author, pages, read) {  
@@ -12,25 +13,13 @@ function Book(title, author, pages, read) {
 }
 
 // add methods to the prototype to save memory
-Book.prototype.info = function() {
-    // determine response based on read bool
-    let readResponse = hasRead(this.read);
-
-    // return desired info
-    return `${this.title} by ${this.author}, ${this.pages}, ${readResponse}`
-}
-
-// create book, push book to library array
-function addBookToLibrary() {
-    // make new book with contents
-    const book = new Book("Harry Potter", "J. K. Rowling", 1000, false);
-
+Book.prototype.makeBook = function() {
     // create new div to display new book
     const bookDiv = document.createElement('div');
-    
+        
     // make flex-container
     const bookContainer = document.createElement('div');
-    
+
     // create h1, h3, 2 para and div elements
     const h1 = document.createElement('h1');
     const h3 = document.createElement('h3');
@@ -61,10 +50,10 @@ function addBookToLibrary() {
     bookDiv.appendChild(bookContainer);
 
     // show book's info
-    h1.textContent = book.title;
-    h3.textContent = book.author;
-    readPara.textContent = book.read;
-    pagesPara.textContent = book.pages;
+    h1.textContent = this.title;
+    h3.textContent = this.author;
+    readPara.textContent = this.read;
+    pagesPara.textContent = this.pages;
     readBtn.textContent = "Toggle Read";
     removeBtn.textContent = "Remove";
 
@@ -72,11 +61,28 @@ function addBookToLibrary() {
     document.querySelector('.library').appendChild(bookDiv);
 }
 
+form.addEventListener("submit", () => {
+    // this will return true if the conditional is true 
+    let bool = form.read.value === "true";
+
+    // pass book info to addBookToLibrary function to add book
+    addBookToLibrary(form.title.value, form.author.value, form.pages.value, bool)
+})
+
+// create book, push book to library array
+function addBookToLibrary(title, author, pages, read) {
+    // make new book with contents
+    const book = new Book(title, author, pages, read);
+
+    // append to library arr
+    myLibrary.push(book);
+}
+
 // loop through array and display book on page
 function displayBooks() {
     // for (let book of myLibrary) {
         // create a div
-        
+        // book.makeBook();
 
         // edit textcontent of the div
 

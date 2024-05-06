@@ -13,7 +13,7 @@
 }
 
 .books {
-    background-color: lavender;
+    background: linear-gradient(45deg, rgb(237, 211, 255), rgb(255, 211, 239));
     border-radius: 20px;
     min-height: 30vh;
     padding: 3vh;
@@ -36,7 +36,7 @@
 
 button {
     height: 2rem;
-    background-color: rgb(255, 201, 219);
+    background-color: rgb(255, 225, 203);
     border: none;
     border-radius: 10px;
     cursor: pointer;
