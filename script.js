@@ -16,7 +16,7 @@ function Book(title, author, pages, read) {
 
 // add methods to the prototype to save memory
 Book.prototype.toggleRead = function() {
-    return this.read === "Read" ? this.read = "Not Read Yet" : this.read = "Read";
+    return this.read === "Read \u2713" ? this.read = "Not Read Yet \u2718" : this.read = "Read \u2713";
 }
 
 Book.prototype.makeBook = function(data) {
@@ -122,7 +122,7 @@ form.addEventListener("submit", () => {
 
 // determine response based on read bool
 function hasRead(read) {
-    return read ? "Read" : "Not Read Yet";
+    return read ? "Read \u2713" : "Not Read Yet \u2718";
 }
 
 // create book, push book to library array

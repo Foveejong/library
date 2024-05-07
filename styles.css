@@ -139,6 +139,10 @@ button[type="submit"] {
     background-color: rgb(201, 227, 255);
 }
 
+button[type="submit"]:hover {
+    background-color: rgb(80, 164, 255);
+}
+
 label {
     flex: 1 1 0;
     text-align: center;
