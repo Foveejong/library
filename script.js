@@ -1,4 +1,4 @@
-const myLibrary = [new Book("Harry Potter and The Prisoner of Azkaban", "A", 1234, hasRead("true")), new Book("Harry Potter and The Prisoner of Azkaban", "A", 1234, hasRead("true")), new Book("Harry Potter and The Prisoner of Azkaban", "A", 1234, hasRead("true")), new Book("Harry Potter and The Prisoner of Azkaban", "A", 1234, hasRead("true"))];
+const myLibrary = [new Book("Harry Potter", "A", 1234, hasRead("true")), new Book("Harry Potter", "A", 1234, hasRead("true")), new Book("Harry Potter", "A", 1234, hasRead("true"))];
 const lib = document.querySelector(".library");
 const dialog = document.querySelector('#dialog');
 const form = document.querySelector('form');
@@ -9,12 +9,16 @@ function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.read = read;  
+    this.read = read;
     // return this -- done by "new" keyword
 }
 
+Book.prototype.toggleRead = function() {
+    return this.read === "Read" ? this.read = "Not Read Yet" : this.read = "Read";
+}
+
 // add methods to the prototype to save memory
-Book.prototype.makeBook = function() {
+Book.prototype.makeBook = function(data) {
     // create new div to display new book
     const bookDiv = document.createElement('div');
         
@@ -32,7 +36,8 @@ Book.prototype.makeBook = function() {
     const removeBtn = document.createElement('button');
     const readBtn = document.createElement('button');
 
-    // 
+    // add data attribute number to enumerate books
+    bookDiv.setAttribute("data", data);
 
     // add books class to new div
     bookDiv.classList.toggle('books');
@@ -42,6 +47,12 @@ Book.prototype.makeBook = function() {
 
     // add btn-container class
     btnContainer.classList.toggle('btn-container');
+
+    // add removebutton class
+    removeBtn.classList.toggle('removeBtn');
+
+    // add readbutton class
+    readBtn.classList.toggle('readBtn');
 
     // append buttons to button-container
     btnContainer.append(removeBtn, readBtn);
@@ -59,13 +70,24 @@ Book.prototype.makeBook = function() {
     pagesPara.textContent = this.pages + " pages";
     readBtn.textContent = "Toggle Read";
     removeBtn.textContent = "Remove";
-    
+
+    // addeventlistener to remove specified card
+    removeBtn.addEventListener("click", (e) => {
+        // delete card of this index
+        myLibrary.splice(data, 1);
+
+        // remove parent book node
+        bookDiv.remove();
+    })
+
+    // addeventlistener to toggle read
+    readBtn.addEventListener("click", (e) => {
+        readPara.textContent = this.toggleRead();
+    })
+
     // // append new book to library
     lib.appendChild(bookDiv);
 }
-
-// delete book
-Book.prototype.deleteBook = function() {}
 
 // when page loads, load book and prompt to input book
 window.addEventListener("load", (e) => {
@@ -85,7 +107,7 @@ form.addEventListener("submit", () => {
     addBookToLibrary(form.title.value, form.author.value, form.pages.value, readresponse);
     
     // add new book to display
-    myLibrary[myLibrary.length - 1].makeBook();
+    myLibrary[myLibrary.length - 1].makeBook(myLibrary.length - 1);
 
     // reset form
     form.reset();
@@ -109,7 +131,6 @@ function addBookToLibrary(title, author, pages, read) {
 function displayAllBooks() {
     for (let book of myLibrary) {
         // create book
-        book.makeBook();
+        book.makeBook(myLibrary.length - 1);
     }
 }
-
