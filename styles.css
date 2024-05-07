@@ -18,6 +18,7 @@
     align-items: center;
     margin: 2rem;
     padding: 2rem;
+    gap: 2rem;
     background-color: rgb(254, 255, 213);
     border-radius: 20px;
 
@@ -26,8 +27,8 @@
     }
 
     > button {
-        height: 10vh;
-        width: 10vw;
+        min-height: 10vh;
+        min-width: 10vw;
         background-color: rgb(201, 255, 223);
     }
 }
