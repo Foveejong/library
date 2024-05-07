@@ -3,20 +3,59 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    /* border: black 1px solid; */
+}
+
+.grid {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 3fr 7fr;
+    background-image: url(./img/booksbackground.jpg);
+}
+
+.sidebar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem;
+    padding: 2rem;
+    background-color: rgb(254, 255, 213);
+    border-radius: 20px;
+
+    & .svg {
+        height: 4rem;
+    }
+
+    > button {
+        height: 10vh;
+        width: 10vw;
+        background-color: rgb(201, 255, 223);
+    }
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.5rem;
 }
 
 .library {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    background-color: rgb(254, 255, 213);
     gap: 3vw;
+    margin: 0 2rem 2rem 2rem;
+    padding: 2rem;
+    border-radius: 20px;
 }
 
 .books {
     background: linear-gradient(45deg, rgb(237, 211, 255), rgb(255, 211, 239));
     border-radius: 20px;
-    min-height: 30vh;
+    height: max(250px, 25vh);
     padding: 3vh;
+    box-shadow: 5px 5px 13px -3px #1BF8FC; 
 }
 
 .books h2, .books h3 {
@@ -40,15 +79,19 @@
 
 button {
     height: 2rem;
-    background-color: rgb(255, 225, 203);
+    background-color: rgb(201, 255, 223);
     border: none;
     border-radius: 10px;
     cursor: pointer;
 }
 
+button:hover {
+    background-color: rgb(120, 255, 174);
+}
+
 dialog {
     position: absolute;
-    top: 10vh;
+    top: 15vh;
     left: 0;
     margin-left: auto; 
     margin-right: auto; 

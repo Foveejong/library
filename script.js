@@ -1,7 +1,8 @@
-const myLibrary = [new Book("Harry Potter", "A", 1234, hasRead("true")), new Book("Harry Potter", "A", 1234, hasRead("true")), new Book("Harry Potter", "A", 1234, hasRead("true"))];
+const myLibrary = [];
 const lib = document.querySelector(".library");
 const dialog = document.querySelector('#dialog');
 const form = document.querySelector('form');
+const openModalBtn = document.querySelector('#openModalBtn')
 
 // define the book constructor
 function Book(title, author, pages, read) {  
@@ -13,11 +14,11 @@ function Book(title, author, pages, read) {
     // return this -- done by "new" keyword
 }
 
+// add methods to the prototype to save memory
 Book.prototype.toggleRead = function() {
     return this.read === "Read" ? this.read = "Not Read Yet" : this.read = "Read";
 }
 
-// add methods to the prototype to save memory
 Book.prototype.makeBook = function(data) {
     // create new div to display new book
     const bookDiv = document.createElement('div');
@@ -97,6 +98,12 @@ window.addEventListener("load", (e) => {
     // prompt using modal
     dialog.showModal();
 })
+
+// open Modal when button pressed
+openModalBtn.addEventListener("click", () => {
+        form.reset();
+        dialog.showModal();
+    });
 
 // on dialog submit, add book to library and display book
 form.addEventListener("submit", () => {
