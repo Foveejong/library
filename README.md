@@ -1,6 +1,6 @@
 # library
 
-Project to create something like [**Etch A Sketch**](https://en.wikipedia.org/wiki/Etch_A_Sketch) toy using only HTML, CSS and Vanilla JS.
+Project to create a library HTML, CSS and Vanilla JS. 
 
 ## Built with:
 
