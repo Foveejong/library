@@ -1,6 +1,6 @@
 # library
 
-Project to create a library HTML, CSS and Vanilla JS. 
+Project to create a library with HTML, CSS and Vanilla JS. 
 
 ## Built with:
 
