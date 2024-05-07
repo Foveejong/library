@@ -1,4 +1,5 @@
-const myLibrary = [];
+const myLibrary = [new Book("Harry Potter and The Prisoner of Azkaban", "A", 1234, hasRead("true")), new Book("Harry Potter and The Prisoner of Azkaban", "A", 1234, hasRead("true")), new Book("Harry Potter and The Prisoner of Azkaban", "A", 1234, hasRead("true")), new Book("Harry Potter and The Prisoner of Azkaban", "A", 1234, hasRead("true"))];
+const lib = document.querySelector(".library");
 const dialog = document.querySelector('#dialog');
 const form = document.querySelector('form');
 
@@ -20,8 +21,8 @@ Book.prototype.makeBook = function() {
     // make flex-container
     const bookContainer = document.createElement('div');
 
-    // create h1, h3, 2 para and div elements
-    const h1 = document.createElement('h1');
+    // create h2, h3, 2 para and div elements
+    const h2 = document.createElement('h2');
     const h3 = document.createElement('h3');
     const pagesPara = document.createElement('p');
     const readPara = document.createElement('p');
@@ -30,6 +31,8 @@ Book.prototype.makeBook = function() {
     // create buttons
     const removeBtn = document.createElement('button');
     const readBtn = document.createElement('button');
+
+    // 
 
     // add books class to new div
     bookDiv.classList.toggle('books');
@@ -43,35 +46,54 @@ Book.prototype.makeBook = function() {
     // append buttons to button-container
     btnContainer.append(removeBtn, readBtn);
 
-    // append h1, h3, 2p and btn-container to book-container
-    bookContainer.append(h1, h3, pagesPara, readPara, btnContainer);
+    // append h2, h3, 2p and btn-container to book-container
+    bookContainer.append(h2, h3, pagesPara, readPara, btnContainer);
 
     // append book-container to books
     bookDiv.appendChild(bookContainer);
 
     // show book's info
-    h1.textContent = this.title;
+    h2.textContent = this.title;
     h3.textContent = this.author;
     readPara.textContent = this.read;
-    pagesPara.textContent = this.pages;
+    pagesPara.textContent = this.pages + " pages";
     readBtn.textContent = "Toggle Read";
     removeBtn.textContent = "Remove";
-
-    // append new book to library
-    document.querySelector('.library').appendChild(bookDiv);
+    
+    // // append new book to library
+    lib.appendChild(bookDiv);
 }
 
+// delete book
+Book.prototype.deleteBook = function() {}
+
+// when page loads, load book and prompt to input book
+window.addEventListener("load", (e) => {
+    // display book
+    displayAllBooks();
+
+    // prompt using modal
+    dialog.showModal();
+})
+
+// on dialog submit, add book to library and display book
 form.addEventListener("submit", () => {
-    // this will return true if the conditional is true 
+    // read or notread bool
     let readresponse = hasRead(form.read.value === "true");
 
     // pass book info to addBookToLibrary function to add book
-    addBookToLibrary(form.title.value, form.author.value, form.pages.value, readresponse)
+    addBookToLibrary(form.title.value, form.author.value, form.pages.value, readresponse);
+    
+    // add new book to display
+    myLibrary[myLibrary.length - 1].makeBook();
+
+    // reset form
+    form.reset();
 })
 
 // determine response based on read bool
 function hasRead(read) {
-    return read ? "read" : "not read yet";
+    return read ? "Read" : "Not Read Yet";
 }
 
 // create book, push book to library array
@@ -84,13 +106,10 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 // loop through array and display book on page
-function displayBooks() {
+function displayAllBooks() {
     for (let book of myLibrary) {
-        // create a div
+        // create book
         book.makeBook();
-
-        // edit textcontent of the div
-
-        // add CSS class to display properly
     }
 }
+
